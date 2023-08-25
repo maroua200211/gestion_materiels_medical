@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\EtudiantController;
+namespace App\Http\Controllers\Auth;
+use App\Http\Controllers\ProductController; 
+use App\Http\Controllers\AuthLoginController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +20,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/etudiant',[EtudiantController::class,"index" ]) ;
+
+//Route::get('/login', 'AuthLoginController@showLoginForm')->name('login');
+/*Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');*/
+Route::get('/login', 'AuthLoginController@showLoginForm')->name('login');
+
+
+//Route::get('/login', [AuthLoginController::class, 'showLoginForm'])->name('login');
+
+/*Route::middleware(['auth'])->group(function () {
+    // Vos routes protégées ici, y compris la route "products"
+    Route::get('/products', 'ProductController@index')->name('products');*/
+//});
+
+
+Route::get('/products', 'ProductController@index')->name('products');
+
+
+
+
+//Route::resource('products',ProductController::class) ;
